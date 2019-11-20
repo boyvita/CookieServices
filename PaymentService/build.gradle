@@ -1,0 +1,27 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group 'CookieServices'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    runtime('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.postgresql:postgresql')
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('com.rabbitmq:amqp-client')
+    compile('org.springframework:spring-core')
+    compile('org.springframework:spring-context')
+    compile('org.springframework.amqp:spring-amqp')
+    compile('org.springframework.amqp:spring-rabbit')
+}
