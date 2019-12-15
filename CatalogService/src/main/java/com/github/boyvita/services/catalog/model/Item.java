@@ -1,7 +1,6 @@
-package com.github.boyvita.services.model;
+package com.github.boyvita.services.catalog.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -21,10 +20,9 @@ public class Item implements Serializable  {
     @Enumerated(EnumType.ORDINAL)
     private ItemStatus itemStatus;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="order_id", nullable=true)
-    @JsonIgnoreProperties("items")
-    private Order order;
+
+    @Column(name="order_id")
+    private Long orderId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable=false)
@@ -32,11 +30,11 @@ public class Item implements Serializable  {
 
     public Item(Product product) {
         this.product = product;
-        this.itemStatus = ItemStatus.PAID;
+        this.itemStatus = ItemStatus.CONFIRMING;
     }
 
     public Item() {
-        this.itemStatus = ItemStatus.PAID;
+        this.itemStatus = ItemStatus.CONFIRMING;
     }
 
     public Long getId() {
@@ -55,12 +53,12 @@ public class Item implements Serializable  {
         this.itemStatus = itemStatus;
     }
 
-    public Order getOrder() {
-        return order;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Product getProduct() {

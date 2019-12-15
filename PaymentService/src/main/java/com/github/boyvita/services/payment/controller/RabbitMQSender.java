@@ -1,7 +1,5 @@
 package com.github.boyvita.services.payment.controller;
 
-import com.github.boyvita.services.model.Item;
-import com.github.boyvita.services.model.Order;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +22,9 @@ public class RabbitMQSender {
 	private String routingKeyCatalog;
 
 
-	public void send(Order order) {
-		rabbitTemplate.convertAndSend(exchange, routingKeyAccount, order);
-		rabbitTemplate.convertAndSend(exchange, routingKeyCatalog, order);
-		System.out.println("Send msg = " + order);
+	public void send(Long orderId) {
+		rabbitTemplate.convertAndSend(exchange, routingKeyAccount, orderId);
+		rabbitTemplate.convertAndSend(exchange, routingKeyCatalog, orderId);
+		System.out.println("Send msg = " + orderId);
 	}
 }

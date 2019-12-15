@@ -35,8 +35,6 @@ public class RabbitConfig {
 	@Value("${rabbit.rabbitmq.routingKeyCatalog}")
 	private String catalogKey;
 
-
-
 	@Bean
 	Queue accQueue() {
 		return new Queue(accountQueue, false);
@@ -46,7 +44,6 @@ public class RabbitConfig {
 	Queue catalogQueue() {
 		return new Queue(catalogQueue, false);
 	}
-
 
 	@Bean
 	DirectExchange exchange() {
@@ -62,7 +59,6 @@ public class RabbitConfig {
 	Binding catalogServiceBinding(Queue catalogQueue, DirectExchange exchange) {
 		return BindingBuilder.bind(catalogQueue).to(exchange).with(catalogKey);
 	}
-
 
 	@Bean
 	public MessageConverter jsonMessageConverter() {

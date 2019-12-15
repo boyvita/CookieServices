@@ -1,14 +1,11 @@
-package com.github.boyvita.services.model;
+package com.github.boyvita.services.accounting.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(schema = "accounting", name = "order")
@@ -23,13 +20,8 @@ public class Order implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private OrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("order")
-    private List<Item> items = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", nullable=false)
-//    @JsonIgnoreProperties("clients")
     private Client client;
 
     public Order(Client client) {
@@ -38,22 +30,6 @@ public class Order implements Serializable {
     }
 
     public Order() {
-    }
-
-    public void addItem(Product product) {
-        Item item = new Item(product);
-        items.add(item);
-        item.setOrder(this);
-    }
-
-    public void addItem(Item item) {
-        items.add(item);
-        item.setOrder(this);
-    }
-
-    public void removeItem(Item item) {
-        items.remove(item);
-        item.setOrder(null);
     }
 
     public Long getId() {
@@ -70,10 +46,6 @@ public class Order implements Serializable {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public List<Item> getItems() {
-        return items;
     }
 
     public Client getClient() {

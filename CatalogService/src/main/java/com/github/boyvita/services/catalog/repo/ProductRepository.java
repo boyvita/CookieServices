@@ -1,8 +1,8 @@
-package com.github.boyvita.services.repo;
+package com.github.boyvita.services.catalog.repo;
 
-import com.github.boyvita.services.model.Product;
+
+import com.github.boyvita.services.catalog.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository

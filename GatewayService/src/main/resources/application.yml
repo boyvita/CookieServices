@@ -1,0 +1,19 @@
+server:
+  port: 8080
+zuul:
+  routes:
+    accounting:
+      path: /accounting/**
+      url: http://localhost:8081/accounting
+    catalog:
+      path: /catalog/**
+      url: http://localhost:8082/catalog
+    pay:
+      path: /pay/**
+      url: http://localhost:8083/pay
+ribbon:
+  eureka:
+    enabled: false
+spring:
+  application:
+    name: gatewayserver

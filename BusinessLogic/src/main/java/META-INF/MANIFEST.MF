@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Main-Class: com.github.boyvita.services.businesslogic.BusinessLogic
+Class-Path: spring-boot-starter-tomcat-2.1.9.RELEASE.jar spring-boot-sta
+ rter-logging-2.1.9.RELEASE.jar spring-rabbit-2.1.11.RELEASE.jar spring-
+ orm-5.1.10.RELEASE.jar spring-boot-starter-web-2.1.9.RELEASE.jar jaxb-a
+ pi-2.3.1.jar logback-core-1.2.3.jar spring-data-jpa-2.1.11.RELEASE.jar 
+ spring-amqp-2.1.11.RELEASE.jar spring-web-5.1.10.RELEASE.jar spring-con
+ text-5.1.10.RELEASE.jar javax.activation-api-1.2.0.jar spring-boot-star
+ ter-2.1.9.RELEASE.jar hibernate-core-5.3.12.Final.jar log4j-to-slf4j-2.
+ 11.2.jar txw2-2.3.1.jar logback-classic-1.2.3.jar spring-data-commons-2
+ .1.11.RELEASE.jar javax.transaction-api-1.3.jar hibernate-commons-annot
+ ations-5.0.4.Final.jar jackson-datatype-jdk8-2.9.9.jar javax.annotation
+ -api-1.3.2.jar spring-aop-5.1.10.RELEASE.jar spring-retry-1.2.4.RELEASE
+ .jar jackson-module-parameter-names-2.9.9.jar spring-boot-autoconfigure
+ -2.1.9.RELEASE.jar classmate-1.4.0.jar spring-core-5.1.10.RELEASE.jar j
+ ul-to-slf4j-1.7.28.jar lombok-1.18.10.jar spring-boot-starter-json-2.1.
+ 9.RELEASE.jar spring-jdbc-5.1.10.RELEASE.jar jackson-datatype-jsr310-2.
+ 9.9.jar jackson-annotations-2.9.0.jar spring-tx-5.1.10.RELEASE.jar dom4
+ j-2.1.1.jar jackson-core-2.9.9.jar spring-boot-2.1.9.RELEASE.jar slf4j-
+ api-1.7.28.jar HikariCP-3.2.0.jar postgresql-42.2.8.jar FastInfoset-1.2
+ .15.jar tomcat-embed-core-9.0.26.jar antlr-2.7.7.jar spring-boot-devtoo
+ ls-2.1.9.RELEASE.jar spring-webmvc-5.1.10.RELEASE.jar spring-boot-start
+ er-aop-2.1.9.RELEASE.jar tomcat-embed-el-9.0.26.jar stax-ex-1.8.jar spr
+ ing-messaging-5.1.10.RELEASE.jar spring-boot-starter-jdbc-2.1.9.RELEASE
+ .jar spring-aspects-5.1.10.RELEASE.jar jaxb-runtime-2.3.1.jar jackson-d
+ atabind-2.9.9.3.jar hibernate-validator-6.0.17.Final.jar byte-buddy-1.9
+ .16.jar spring-beans-5.1.10.RELEASE.jar jandex-2.0.5.Final.jar javassis
+ t-3.23.2-GA.jar spring-boot-starter-data-jpa-2.1.9.RELEASE.jar spring-j
+ cl-5.1.10.RELEASE.jar amqp-client-5.4.3.jar istack-commons-runtime-3.0.
+ 7.jar spring-boot-starter-amqp-2.1.9.RELEASE.jar tomcat-embed-websocket
+ -9.0.26.jar validation-api-2.0.1.Final.jar snakeyaml-1.23.jar aspectjwe
+ aver-1.9.4.jar javax.persistence-api-2.2.jar jboss-logging-3.3.3.Final.
+ jar log4j-api-2.11.2.jar spring-expression-5.1.10.RELEASE.jar
+

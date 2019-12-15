@@ -53,16 +53,5 @@ public class RabbitConfig {
 		return rabbitTemplate;
 	}
 
-//
-//	@Bean
-//	public AsyncRabbitTemplate asyncRabbitTemplate(ConnectionFactory connectionFactory) {
-//
-//		return new AsyncRabbitTemplate((RabbitTemplate) rabbitTemplate(connectionFactory),
-//				rpcReplyMessageListenerContainer(connectionFactory),
-//				exchange + "/" + routingKeyCatalog);
-//	}
-
-
-
 
 }
