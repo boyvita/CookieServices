@@ -5,6 +5,7 @@ import com.github.boyvita.services.accounting.model.Client;
 import com.github.boyvita.services.accounting.model.Order;
 import com.github.boyvita.services.accounting.repo.ClientRepository;
 import com.github.boyvita.services.accounting.repo.OrderRepository;
+import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,10 +13,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 @RestControllerAdvice
-@RequestMapping("accounting")
+@RequestMapping//("accounting")
 @ComponentScan(basePackages = "com.github.boyvita.services.accounting")
 @EnableJpaRepositories(basePackages = "com.github.boyvita.services.accounting.repo")
 @EntityScan(basePackages = "com.github.boyvita.services.accounting.model")
@@ -107,5 +113,26 @@ public class AccountingController {
         clientRepository.delete(client);
         return client;
     }
+
+//    @GetMapping("/client/{id}/items")
+//    public JSONObject getClientItems(@PathVariable("id") Client client) throws IOException {
+//        String requestUrl = "http://localhost:8762/catalog/item";
+//
+//        URL url = new URL(requestUrl);
+//        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//
+//        connection.connect();
+//
+//        InputStream in;
+//        int status = connection.getResponseCode();
+//        if (status != HttpURLConnection.HTTP_OK) {
+//            in = connection.getErrorStream();
+//        } else {
+//            in = connection.getInputStream();
+//        }
+//        JSONObject obj = new JSONObject(in);
+//        return obj;
+//    }
+
 
 }

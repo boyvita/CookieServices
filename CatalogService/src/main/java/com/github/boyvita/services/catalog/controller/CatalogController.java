@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("catalog")
+@RequestMapping//("catalog")
 @ComponentScan(basePackages = "com.github.boyvita.services.catalog")
 @EnableJpaRepositories(basePackages = "com.github.boyvita.services.catalog.repo")
 @EntityScan(basePackages = "com.github.boyvita.services.catalog.model")

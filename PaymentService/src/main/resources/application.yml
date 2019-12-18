@@ -1,0 +1,44 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: payment-service
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  datasource:
+    url: jdbc:postgresql://localhost/cookie
+    username: postgres
+    password: postgres
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        default_schema: accounting
+        id:
+          new_generator_mappings: false
+        temp:
+          use_jdbc_metadata_defaults: false
+  main:
+    allow-bean-definition-overriding: true
+
+rabbit:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    exchange: rabbit.exchange
+    queueAccount: rabbit.AccountingQueue
+    queueCatalog: rabbit.CatalogQueue
+    routingKeyAccount: rabbit.AccRoute
+    routingKeyCatalog: rabbit.CatalogRoute
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true
+
