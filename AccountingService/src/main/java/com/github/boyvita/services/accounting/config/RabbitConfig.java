@@ -43,7 +43,6 @@ public class RabbitConfig {
 		return BindingBuilder.bind(accountQueue).to(exchange).with(routingkey);
 	}
 
-
 	@Bean
 	public MessageConverter jsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
@@ -55,17 +54,5 @@ public class RabbitConfig {
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
 		return rabbitTemplate;
 	}
-
-//
-//	@Bean
-//	public AsyncRabbitTemplate asyncRabbitTemplate(ConnectionFactory connectionFactory) {
-//
-//		return new AsyncRabbitTemplate((RabbitTemplate) rabbitTemplate(connectionFactory),
-//				rpcReplyMessageListenerContainer(connectionFactory),
-//				exchange + "/" + routingkey);
-//	}
-
-
-
 
 }

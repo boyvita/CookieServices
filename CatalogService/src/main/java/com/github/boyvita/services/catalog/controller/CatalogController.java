@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping//("catalog")
+@RequestMapping
 @ComponentScan(basePackages = "com.github.boyvita.services.catalog")
 @EnableJpaRepositories(basePackages = "com.github.boyvita.services.catalog.repo")
 @EntityScan(basePackages = "com.github.boyvita.services.catalog.model")
@@ -32,38 +32,6 @@ public class CatalogController {
         this.productRepository = productRepository;
         this.itemRepository = itemRepository;
     }
-
-    /**
-     This is a test method, only for demonstration purposes
-     */
-//    @GetMapping("test")
-//    public void testmq(){
-//        Product product2 = new Product("p1", 2.2, "perfect p1");
-//        Item item1 = new Item(product2);
-//        rabbitMQSender.send(item1);
-//        System.out.println("Item send to mq =" + item1);
-//    }
-
-    @GetMapping("/start")
-    public void start() {
-        Product product1 = new Product("p1", 1.1, "perfect p1");
-        Product product2 = new Product("p1", 2.2, "perfect p1");
-        productRepository.save(product1);
-        productRepository.save(product2);
-
-
-        Item item1 = new Item(product1);
-        Item item2 = new Item(product1);
-        Item item3 = new Item(product2);
-        item1.setOrderId(new Long(1));
-        item2.setOrderId(new Long(1));
-        item3.setOrderId(new Long(1));
-        itemRepository.save(item1);
-        itemRepository.save(item2);
-        itemRepository.save(item3);
-    }
-
-
 
     @GetMapping("/product")
     public List<Product> listProduct() {

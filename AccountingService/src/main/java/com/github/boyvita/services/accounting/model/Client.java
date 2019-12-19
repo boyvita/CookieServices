@@ -42,7 +42,4 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-//    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-//    @JsonIgnoreProperties("client")
-//    private List<Order> orders = new ArrayList<>();
 }

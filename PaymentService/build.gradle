@@ -13,26 +13,30 @@ repositories {
 }
 
 dependencies {
-    runtime('org.springframework.boot:spring-boot-devtools')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.postgresql:postgresql')
-    compile('org.projectlombok:lombok')
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.postgresql:postgresql')
+    implementation('org.projectlombok:lombok')
 
-    compile('org.springframework.boot:spring-boot-starter-amqp')
-    compile('com.rabbitmq:amqp-client')
-    compile('org.springframework:spring-core')
-    compile('org.springframework:spring-context')
-    compile('org.springframework.amqp:spring-amqp')
-    compile('org.springframework.amqp:spring-rabbit')
+    implementation('org.springframework.boot:spring-boot-starter-amqp')
+    implementation('com.rabbitmq:amqp-client')
+    implementation('org.springframework:spring-core')
+    implementation('org.springframework:spring-context')
+    implementation('org.springframework.amqp:spring-amqp')
+    implementation('org.springframework.amqp:spring-rabbit')
 
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-
-
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 }
 
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2"
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.github.boyvita.services.payment.PaymentApplication'
     }
 }

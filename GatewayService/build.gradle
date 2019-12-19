@@ -12,14 +12,19 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    runtime('org.springframework.boot:spring-boot-devtools')
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    compile 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
 }
 
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2"
+    }
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.github.boyvita.services.gateway.GatewayApplication'
     }
 }

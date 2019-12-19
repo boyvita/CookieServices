@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-@RequestMapping//("pay")
+@RequestMapping
 @ComponentScan(basePackages = "com.github.boyvita.services")
 public class PaymentController {
 
@@ -24,12 +24,6 @@ public class PaymentController {
     @Autowired
     @Lazy
     private EurekaClient eurekaClient;
-
-    @GetMapping
-    public String greeting() {
-        return "Hello from Payment Service!";
-    }
-
 
     @PostMapping
     public Long payOrderById(@RequestBody Long orderId) {

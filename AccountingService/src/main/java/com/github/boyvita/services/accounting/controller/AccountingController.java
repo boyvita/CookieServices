@@ -28,7 +28,7 @@ import static com.github.boyvita.services.accounting.util.JsonReader.readJsonArr
 
 
 @RestControllerAdvice
-@RequestMapping//("accounting")
+@RequestMapping
 @ComponentScan(basePackages = "com.github.boyvita.services.accounting")
 @EnableJpaRepositories(basePackages = "com.github.boyvita.services.accounting.repo")
 @EntityScan(basePackages = "com.github.boyvita.services.accounting.model")
@@ -80,17 +80,6 @@ public class AccountingController {
 
     }
 
-//    @DeleteMapping("/order/{id}")
-//    public Order deleteOrder(@PathVariable("id") Order order) {
-//        for (Item item : order.getItems()) {
-//            item.setOrder(null);
-//            itemRepository.save(item);
-//        }
-//        orderRepository.delete(order);
-//        return order;
-//    }
-
-
     @GetMapping("/client")
     public List<Client> listClient() {
         return clientRepository.findAll();
@@ -126,11 +115,6 @@ public class AccountingController {
 
         String requestUrl = "http://localhost:8762/catalog/item";
         JSONArray res = new JSONArray();
-
-//        if (!clientRepository.exists(client)){
-//            return new ResponseEntity<>(res.toList(), HttpStatus.OK);
-//        }
-
 
         JSONArray json = readJsonArrayFromUrl(requestUrl);
 
