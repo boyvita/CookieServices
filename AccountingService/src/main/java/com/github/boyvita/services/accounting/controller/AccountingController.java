@@ -5,12 +5,15 @@ import com.github.boyvita.services.accounting.model.Client;
 import com.github.boyvita.services.accounting.model.Order;
 import com.github.boyvita.services.accounting.repo.ClientRepository;
 import com.github.boyvita.services.accounting.repo.OrderRepository;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,7 +21,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
+import java.nio.charset.Charset;
+import java.util.*;
+
+import static com.github.boyvita.services.accounting.util.JsonReader.readJsonArrayFromUrl;
+
 
 @RestControllerAdvice
 @RequestMapping//("accounting")
@@ -114,25 +121,36 @@ public class AccountingController {
         return client;
     }
 
-//    @GetMapping("/client/{id}/items")
-//    public JSONObject getClientItems(@PathVariable("id") Client client) throws IOException {
-//        String requestUrl = "http://localhost:8762/catalog/item";
-//
-//        URL url = new URL(requestUrl);
-//        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//
-//        connection.connect();
-//
-//        InputStream in;
-//        int status = connection.getResponseCode();
-//        if (status != HttpURLConnection.HTTP_OK) {
-//            in = connection.getErrorStream();
-//        } else {
-//            in = connection.getInputStream();
+    @GetMapping("/client/{id}/items")
+    public ResponseEntity<Object> getClientItems(@PathVariable("id") Client client) throws IOException {
+
+        String requestUrl = "http://localhost:8762/catalog/item";
+        JSONArray res = new JSONArray();
+
+//        if (!clientRepository.exists(client)){
+//            return new ResponseEntity<>(res.toList(), HttpStatus.OK);
 //        }
-//        JSONObject obj = new JSONObject(in);
-//        return obj;
-//    }
+
+
+        JSONArray json = readJsonArrayFromUrl(requestUrl);
+
+        System.out.println(json);
+
+
+        for (Order ord : orderRepository.findAll()){
+            if (Objects.equals(ord.getClient().getId(), client.getId())) {
+                for (int i = 0; i< json.length(); i++){
+                    if (Objects.equals(ord.getId(), json.getJSONObject(i).getLong("orderId")))  {
+                        res.put(json.getJSONObject(i));
+                    }
+                }
+            }
+        }
+
+        System.out.println(res.toString());
+        return new ResponseEntity<>(res.toList(), HttpStatus.OK);
+    }
+
 
 
 }
