@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group 'CookieServices'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.postgresql:postgresql')
+    implementation('org.projectlombok:lombok')
+
+    implementation('org.springframework.boot:spring-boot-starter-amqp')
+    implementation('com.rabbitmq:amqp-client')
+    implementation('org.springframework:spring-core')
+    implementation('org.springframework:spring-context')
+    implementation('org.springframework.amqp:spring-amqp')
+    implementation('org.springframework.amqp:spring-rabbit')
+
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2"
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.github.boyvita.services.payment.PaymentApplication'
+    }
+}
